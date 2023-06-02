@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <img class="ern" src="d6d126d15f1a8922df3ee1c5433d61ca1656815811_main.jpg" alt="" srcset="">
+        <div  style="display: block; color: white; position: relative; top: -20vh; font-size: 40px; margin-left: 40px;text-align: center;" class="info">Trouvez le code des  edgerunners </div>
+    </div>
+    <button class="on-click" onclick="myFunction()">Try it</button>
+    <p id="demo"></p>
+    <script>
+        function myFunction() {
+            pass = '%63%70%61%73%62%69%65%6e%64%75%72%70%61%73%73%77%6f%72%64';
+            h =prompt('Entrez le mot de passe');
+            let text ="";
+            //console.log( caesarCipherEncrypt(unescape("%64%78%7A%74%74%5F%7A%78%74%70%76%E9"), 5) )
+            //.log( caesarCipherDecrypt(unescape(pass), unescape("5%20k%205d%5Bfj")) )
+          if(h == unescape("%68%64%67%6A%77%48%6D%77%74%72%E9")) {
+            text = caesarCipherDecrypt(unescape("%68%64%67%6A%77%48%6D%77%74%72%E9"), 5);
+            alert('Password accepté, vous pouvez valider le challenge avec ce  mot de passe de.');   
+        } else {
+            alert('Mauvais mot de passe');
+        }
+          document.getElementById("demo").innerHTML = text;
+        }
+
+        function caesarCipherEncrypt(text, shift) {
+           
+            const encryptedText = text.replace(/[a-z]/gi, (match) => {
+              const charCode = match.charCodeAt(0);
+              let encryptedCharCode;
+          
+              if (match >= 'a' && match <= 'z') {
+                encryptedCharCode = ((charCode - 97 + shift) % 26) + 97;
+              } else if (match >= 'A' && match <= 'Z') {
+                encryptedCharCode = ((charCode - 65 + shift) % 26) + 65;
+              } else {
+                return match; // Caractère non alphabétique
+              }
+          
+              return String.fromCharCode(encryptedCharCode);
+            });
+            console.log(encryptedText)
+            return encryptedText;
+          }
+
+          function caesarCipherDecrypt(encryptedText, shift) {
+            
+            return caesarCipherEncrypt(encryptedText, 26-shift);
+             // Décalage inverse pour le déchiffrement
+          }
+        </script>
+        
+</body>
+</html>
